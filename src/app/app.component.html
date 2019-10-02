@@ -1,6 +1,30 @@
 <div>
   <h1>Test Unitaire Angular</h1>
 
-  <p> countNumber Return : {{res}}</p>
-  <button (click)="countNumber()">Button Test</button>
+  <div>
+    <h2> Test sur Nombre </h2>
+    <p> countNumber Return : {{res}}</p>
+    <button (click)="countN()">Button Test</button>
+  
+  </div>
+
+  <div>
+      <h2> Test sur String </h2>
+      <p> remplace les e avec un o sur cette phrase: </p>
+      <p>je teste cette ligne</p>
+      <p> Replace Return : {{resligne}}</p>
+      <button (click)="replace()">Button Test</button>
+    
+    </div>
+
+    <div>
+        <h2> Test sur Objet Classe </h2>
+        <p> Voici {{ p.nom }} </p>
+        <p>{{p.nom}}  a  {{ p.age }} ans</p>
+        <p> {{p.nom }} fait {{p.taille}} cm </p>
+        <p> vive {{p.nom }} {{p.prenom}}  </p>
+
+        <button (click)="create()">Button Test</button>
+      
+    </div>
 </div>
