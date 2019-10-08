@@ -24,5 +24,6 @@ install:
   - npm install
 
 script:
-  - sonar-scanner
+  - npm build
+  - sonar-scanner 
   - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
