@@ -1,16 +1,21 @@
-# This defines our starting point
-FROM node:10
+FROM nginx:alpine
 
-RUN mkdir /usr/src/app 
+RUN apk --no-cache add npm git bash curl
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY . .
+COPY package*.json /app/
+RUN npm install
 
-RUN npm install 
+COPY ./ /app/
 
-RUN npm run build --prod
 
-EXPOSE 4200
+ARG configuration=production
+RUN npm run build -- --output-path=/app/dist/out --configuration $configuration
 
-CMD ["npm", "start"]
+RUN cp -R /app/dist/out/* /usr/share/nginx/html/
+
+COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
+CMD ["nginx", "-g", "daemon off;"]
+
+

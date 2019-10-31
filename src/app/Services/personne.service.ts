@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Personne } from '../Classes/personne';
+import { HttpClient } from '@angular/common/http'
 
 @Injectable({
   providedIn: 'root'
 })
 export class PersonneService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
   p: Personne;
 
 
@@ -20,4 +21,10 @@ export class PersonneService {
 
     return this.p;
   }
+
+  getPersonne(){
+    return this.http.get("http://localhost:8080");
+  }
+
+  
 }

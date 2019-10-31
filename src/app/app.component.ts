@@ -15,7 +15,7 @@ export class AppComponent {
   title = 'testUnitaire';
   res = 0;
   resligne ="";
-  p = new Personne();
+  p: any;
   
   countN(){
     this.res = this.calculService.countNumber(4,5);
@@ -28,6 +28,14 @@ export class AppComponent {
 
   create(){
     this.p = this.pService.createPersonne("bob","lenon",24,170);
+  }
+
+  showPersonne(){
+    this.pService.getPersonne().subscribe(
+      data => {
+        this.p = data;
+      }
+    )
   }
 
 }
